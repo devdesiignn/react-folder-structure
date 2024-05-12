@@ -1,3 +1,7 @@
+# React Folder Structure
+
+Welcome to the open-sourced file and folder structure for React applications! This repository provides a comprehensive and organized layout for structuring your React projects, aimed at improving maintainability, scalability, and collaboration among developers.
+
 ```
 src/
 ├── assets/
@@ -90,10 +94,6 @@ src/
         └── Role.ts
 ```
 
-# React Folder Structure
-
-Welcome to the open-sourced file and folder structure for React applications! This repository provides a comprehensive and organized layout for structuring your React projects, aimed at improving maintainability, scalability, and collaboration among developers.
-
 ## Overview
 
 Managing the architecture of a React application can be challenging as projects grow in complexity. This repository offers a standardized structure that promotes modularity, reusability, and clarity in code organization.
@@ -123,3 +123,54 @@ This repository includes the following directories:
 - **routes**: Contains route configuration files or constants defining the routes used in the application.
 - **types**: Holds TypeScript type definitions used throughout the application.
 
+## Additional Information
+
+You can enable absolute path in your project setup using the following options:
+
+1. **Vite**:
+   
+In Vite, configure the `alias` option in your `vite.config.js` file to set up aliases for absolute paths.
+
+```
+import { defineConfig } from 'vite';
+import path from 'path';
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+});
+```
+
+2. **Create React App (CRA)**:
+
+In Create React App, add a `jsconfig.json` or `tsconfig.json` file in the root of your project, and configure the `baseUrl` and `paths` options to set up aliases for absolute paths.
+
+```
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    }
+  }
+}
+```
+
+Enabling absolute paths in your project setup offers several advantages, primarily aimed at improving code maintainability and developer experience. One key reason is to avoid the need for cumbersome relative path chaining (e.g., `../../../`) in import statements.
+
+```
+// Without absolute path
+import Button from '../../../../components/Button';
+
+// With absolute path
+import Button from '@/components/Button';
+```
+
+## Conclusion
+
+Adopting this folder structure enhances React project organization, boosting productivity and collaboration. It offers modularity, scalability, and consistency, streamlining development and improving the developer experience. We encourage its use and welcome contributions. 
+
+Thank you for considering this approach. Happy coding!
